@@ -1,6 +1,11 @@
 {% extends "layout.html" %}
 
-{% set pageHeading = "What's your date of birth?" %}
+{% if data['registering-for'] == "Someone else" %}
+	{% set pageHeading = "What's their date of birth?" %}
+{% else %}
+	{% set pageHeading = "What's your date of birth?" %}
+{% endif %}
+
 {% set pageSection = "" %}
 
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}

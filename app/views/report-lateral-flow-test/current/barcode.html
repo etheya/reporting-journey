@@ -31,13 +31,15 @@
 				{{ govukInput({
 					label: { text: "Test strip ID number" },
 					id: "test-strip-id",
-					name: "test-strip-id"
+					name: "test-strip-id",
+					value: data['test-strip-id']
 				}) }}
 
 				{{ govukInput({
 					label: { text: "Confirm test strip ID number" },
 					id: "test-strip-id-confirm",
-					name: "test-strip-id-confirm"
+					name: "test-strip-id-confirm",
+					value: data['test-strip-id-confirm']
 				}) }}
 
 				{{ govukButton({

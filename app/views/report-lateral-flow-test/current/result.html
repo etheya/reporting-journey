@@ -14,7 +14,7 @@
 			
 			<p>Use the test kit instructions to answer this.</p>
 
-			<form method="post" action="contact-mobile-number" >
+			<form method="post" action="#" >
 				
 
 				{{ govukRadios({					
@@ -28,7 +28,7 @@
 					  	}
 					},					
 					items: [
-					  { value: "Positive, redirect(about-work)", text: "Positive result (likely to be infectious), I have an email address",  checked: checked("have-email-address", "Positive") },
+					  { value: "Positive", text: "Positive result (likely to be infectious), I have an email address",  checked: checked("have-email-address", "Positive") },
 					  { value: "Negative", text: "Negative result (not likely to be infectious)",  checked: checked("have-email-address", "Negative") },					  
 					  { value: "Void", text: "Void or invalid result (the test did not work properly)",  checked: checked("have-email-address", "Void") }					  
 					]

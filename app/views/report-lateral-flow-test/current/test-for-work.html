@@ -1,6 +1,11 @@
 {% extends "layout.html" %}
 
-{% set pageHeading = "Did you take this test for your job?" %}
+{% if data['registering-for'] == "Someone else" %}
+	{% set pageHeading = "Did they take this test for their job?" %}
+{% else %}
+	{% set pageHeading = "Did you take this test for your job?" %}
+{% endif %}
+
 {% set pageSection = "" %}
 
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Enter your occupation if you have one" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<p>This helps us track which occupations are affected by coronavirus.</p>
+			<p>You can <a href="check-answers">continue without answering</a> if you want.</p>
+			
+			
+			<form method="post" action="email" >
+				
+
+				{{ govukInput({
+					label: {
+						text: "Occupation"
+					},
+					id: "occupation",					
+					name: "occupation",
+					value: data['occupation']
+				}) }}				  
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+				<p><a href="check-answers">Continue without answering</a></p>
+			</form>
+            
+  		</div>
+	</div>    
+
+{% endblock %}

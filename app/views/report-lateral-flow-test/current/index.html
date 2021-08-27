@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% set showBackLink = false %}
+{% set showBreadcrumb = true %}
 
 {% set pageHeading = "Report a COVID-19 rapid lateral flow test result" %}
 {% set pageSection = "" %}
@@ -11,6 +12,7 @@
 	<div class="govuk-grid-row">
 		<div class="govuk-grid-column-two-thirds-from-desktop">
 
+			
 			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
 			
 			<p>Use this service to report your result to the NHS after using a rapid lateral flow test kit to check if you’re infectious with coronavirus (COVID-19).</p>

@@ -14,40 +14,62 @@
 			
 			<p>If you do not have a home address in the UK, use the address where you’re staying.</p>						
 			
-			<form method="post" action="" >
+			{% if data['select-address'] == "yes" %}
+			
+				<form method="post" action="nhs-number-option" >
+
+					{{ govukInput({
+						label: {
+							text: "Select an address"
+						},
+						id: "address-selected",					
+						name: "address-selected",
+						value: "Fightertown, Newcastle, NE1 4DX"
+					}) }}	
+
+					<p><a href="home-address-details">I cannot find the address in the list</a></p>
+
+					{{ govukButton({
+						text: "Continue"				
+					}) }}
+
+			{% else %}
+
+				<form method="post" action="home-address-lookup" >				
+
+					{{ govukInput({
+						label: {
+							text: "Postcode"
+						},
+						id: "unique-org-number",
+						classes: "govuk-!-width-one-third",
+						name: "unique-org-number",
+						value: data['unique-org-number']
+					}) }}
+
+					<input type="hidden" name="select-address" id="select-address" value="yes" />
+
+					{{ govukButton({
+						text: "Find address"				
+					}) }}
 				
+					<p><a href="home-address-details">Enter address manually</a></p>
 
-				{{ govukInput({
-					label: {
-						text: "Postcode"
-					},
-					id: "unique-org-number",
-					classes: "govuk-!-width-one-third",
-					name: "unique-org-number",
-					value: data['unique-org-number']
-				}) }}				  
-
-				{{ govukButton({
-					text: "Find address"				
-				}) }}
-
-				<p><a href="home-address-details">Enter address manually</a></p>
-
+			{% endif %}				
 			</form>
             
-
-			<details class="govuk-details" data-module="govuk-details">
-				<summary class="govuk-details__summary">
-					<span class="govuk-details__summary-text">If you do not have a fixed address</span>
-				</summary>
-				<div class="govuk-details__text">
-					<p>You can use the postcode of a nearby reference address, such as your GP.</p>					
-					<p>If you still need help, call 119 (free from mobiles and landlines). Lines are open 7am to 11pm.</p>
-				</div>
-			</details>
-
+			{% if data['select-address'] != "yes" %}
+			
+				<details class="govuk-details" data-module="govuk-details">
+					<summary class="govuk-details__summary"><span class="govuk-details__summary-text">If you do not have a fixed address</span></summary>
+					<div class="govuk-details__text">
+						<p>You can use the postcode of a nearby reference address, such as your GP.</p>					
+						<p>If you still need help, call 119 (free from mobiles and landlines). Lines are open 7am to 11pm.</p>
+					</div>
+				</details>
+			
+			{% endif %}
 
   		</div>
 	</div>    
-
 {% endblock %}

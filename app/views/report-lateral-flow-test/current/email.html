@@ -32,7 +32,8 @@
 					classes: "govuk-!-width-two-thirds",
 					label: {
 						text: "Email address"
-					}
+					},
+					value: data['email-address']
 					}) }}
 
 					{{ govukInput({
@@ -44,7 +45,8 @@
 						classes: "govuk-!-width-two-thirds",
 						label: {
 							text: "Confirm email address"
-						}
+						},
+						value: data['confirm-email-address']
 						}) }}
 				{% endset -%}
 

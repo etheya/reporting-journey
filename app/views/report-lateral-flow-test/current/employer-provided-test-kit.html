@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% set pageHeading = "Did your employer provide the test kit?" %}
-{% set pageSection = "Prototype" %}
+{% set pageSection = "" %}
 
 {% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
 
@@ -14,7 +14,7 @@
 			
 			
 
-			<form method="post" action="test-date" >
+			<form method="post" action="occupation" >
 
 				{{ govukRadios({					
 					idPrefix: "employer-provide-test-kit",

@@ -12,52 +12,38 @@
 
 			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
 			
+			<h2 class="govuk-heading-m">Personal details</h2>
 			<dl class="govuk-summary-list govuk-!-margin-bottom-9">
-				{# {% if data['enter-order-id'] %}
-				<div class="govuk-summary-list__row">
-					<dt class="govuk-summary-list__key">Test kit order ID</dt>
-					<dd class="govuk-summary-list__value">{{ data['enter-order-id'] }}</dd>
-					<dd class="govuk-summary-list__actions"><a class="govuk-link" href="enter-order-id">Change<span class="govuk-visually-hidden"> order ID</span></a></dd>
-				</div>
-				{% endif %} #}
-				{# {% if data['registering-test-kit'] %}
-				<div class="govuk-summary-list__row">
-					<dt class="govuk-summary-list__key">Registering test kit for yourself</dt>
-					<dd class="govuk-summary-list__value">{{ data['registering-test-kit'] }}</dd>
-					<dd class="govuk-summary-list__actions"><a class="govuk-link" href="registering-test-kit">Change<span class="govuk-visually-hidden"> who the kit is registed for</span></a></dd>
-				</div>
-				{% endif %} #}
-				{% if data['first-name'] %}
+				
+				{% if data['firstname'] %}
 				<div class="govuk-summary-list__row">
 					<dt class="govuk-summary-list__key">Name</dt>
-					<dd class="govuk-summary-list__value">{{ data['first-name'] }} {{ data['last-name'] }}</dd>
-					<dd class="govuk-summary-list__actions"><a class="govuk-link" href="what-is-your-name?linkaction=change">Change<span class="govuk-visually-hidden"> name</span></a></dd>
+					<dd class="govuk-summary-list__value">{{ data['firstname'] }} {{ data['lastname'] }}</dd>
+					<dd class="govuk-summary-list__actions"><a class="govuk-link" href="name?linkaction=change">Change<span class="govuk-visually-hidden"> name</span></a></dd>
 				</div>
-				{% endif %}
-				{# <div class="govuk-summary-list__row">
-					<dt class="govuk-summary-list__key">Last name</dt>
-					<dd class="govuk-summary-list__value"></dd>
-					<dd class="govuk-summary-list__actions"><a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a></dd>
-				</div> #}
-			
-				{% if data['barcode-number'] %}
-				<div class="govuk-summary-list__row">
-					<dt class="govuk-summary-list__key">Barcode number</dt>
-					<dd class="govuk-summary-list__value">{{ data['barcode-number'] }}</dd>
-					<dd class="govuk-summary-list__actions"><a class="govuk-link" href="test-kit-barcode?linkaction=change">Change<span class="govuk-visually-hidden"> barcode number</span></a></dd>
-				</div>
-				{% endif %}
-			
-				{% if data['barcode-number'] %}
+				{% endif %}				
+				{% if data['dob-day'] %}
 				<div class="govuk-summary-list__row">
 					<dt class="govuk-summary-list__key">Date of birth</dt>
 					<dd class="govuk-summary-list__value">{{ data['dob-day'] }} {{ data['dob-month'] | toMonth }} {{ data['dob-year'] }}</dd>
-					<dd class="govuk-summary-list__actions"><a class="govuk-link" href="date-of-birth?linkaction=change">Change<span class="govuk-visually-hidden"> barcode number</span></a></dd>
+					<dd class="govuk-summary-list__actions"><a class="govuk-link" href="age?linkaction=change">Change<span class="govuk-visually-hidden"> date of birth</span></a></dd>
 				</div>
 				{% endif %}
-			
-			
-				{% if data['address-line-1'] %}
+				{% if data['employer-provide-test-kit'] %}
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">Medical record</dt>
+					<dd class="govuk-summary-list__value">{{ data['employer-provide-test-kit'] }}</dd>
+					<dd class="govuk-summary-list__actions"><a class="govuk-link" href="gender?linkaction=change">Change<span class="govuk-visually-hidden"> whats on your medical record</span></a></dd>
+				</div>
+				{% endif %}
+				{% if data['ethnicity'] %}
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">Ethnicity</dt>
+					<dd class="govuk-summary-list__value">{{ data['ethnicity'] }}</dd>
+					<dd class="govuk-summary-list__actions"><a class="govuk-link" href="ethnicity-group?linkaction=change">Change<span class="govuk-visually-hidden"> whats on your medical record</span></a></dd>
+				</div>
+				{% endif %}
+				{% if data['address-selected'] %}
 				<div class="govuk-summary-list__row">
 					<dt class="govuk-summary-list__key">Address</dt>
 					<dd class="govuk-summary-list__value">
@@ -67,40 +53,82 @@
 						{% if data['address-county'] %}<br>{{ data['address-county'] }}{% endif %}
 						{% if data['address-postcode'] %}<br>{{ data['address-postcode']}}{% endif %}
 					</dd>
-					<dd class="govuk-summary-list__actions"><a class="govuk-link" href="address?linkaction=change">Change<span class="govuk-visually-hidden"> address</span></a></dd>
+					<dd class="govuk-summary-list__actions"><a class="govuk-link" href="home-address-lookup?linkaction=change">Change<span class="govuk-visually-hidden"> address</span></a></dd>
 				</div>
 				{% endif %}
-				{% if data['how-to-get-results'] %}
+				{% if data['email-address'] %}
 				<div class="govuk-summary-list__row">
-					<dt class="govuk-summary-list__key">How to get results</dt>
-					<dd class="govuk-summary-list__value">{{ data['how-to-get-results'] }}</dd>
+					<dt class="govuk-summary-list__key">Contact details</dt>
+					<dd class="govuk-summary-list__value">{{ data['email-address'] }} <br>{{ data['mobile-number'] }}</dd>
 					<dd class="govuk-summary-list__actions">
-					<a class="govuk-link" href="how-to-get-results?linkaction=change">Change<span class="govuk-visually-hidden"> how to get results</span></a></dd>
+					<a class="govuk-link" href="email?linkaction=change">Change<span class="govuk-visually-hidden"> email address</span></a></dd>
 				</div>
 				{% endif %}
-				{% if data['how-to-get-results'] == "Email" %}
+				{% if data['provide-nhs-number'] %}
 				<div class="govuk-summary-list__row">
-					<dt class="govuk-summary-list__key">Email address</dt>
-					<dd class="govuk-summary-list__value">{{ data['email-address'] }}</dd>
+					<dt class="govuk-summary-list__key">NHS number</dt>
+					<dd class="govuk-summary-list__value">{% if data['nhs-number'] %}{{ data['nhs-number'] }} {% else %}Not known{% endif %}</dd>
 					<dd class="govuk-summary-list__actions">
-					<a class="govuk-link" href="how-to-get-results?linkaction=change">Change<span class="govuk-visually-hidden"> email address</span></a></dd>
-				</div>
-				{% elif data['how-to-get-results'] == "Text message" %}
-				<div class="govuk-summary-list__row">
-					<dt class="govuk-summary-list__key">Phone number</dt>
-					<dd class="govuk-summary-list__value">{{ data['phone-number'] }}</dd>
-					<dd class="govuk-summary-list__actions">
-					<a class="govuk-link" href="how-to-get-results?linkaction=change">Change<span class="govuk-visually-hidden"> phone number</span></a></dd>
+					<a class="govuk-link" href="nhs-number-option?linkaction=change">Change<span class="govuk-visually-hidden"> email address</span></a></dd>
 				</div>
 				{% endif %}
+			</dl>
+
+
+			<h2 class="govuk-heading-m">Test details</h2>
+			<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+				{% if data['test-date-taken'] %}
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">Date test taken</dt>
+					<dd class="govuk-summary-list__value">{{ data['test-date-taken'] }}</dd>
+					<dd class="govuk-summary-list__actions">
+					<a class="govuk-link" href="test-date?linkaction=change">Change<span class="govuk-visually-hidden"> email address</span></a></dd>
+				</div>
+				{% endif %}
+				{% if data['test-strip-id'] %}
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">Test strip ID number</dt>
+					<dd class="govuk-summary-list__value">{{ data['test-strip-id'] }}</dd>
+					<dd class="govuk-summary-list__actions"><a class="govuk-link" href="barcode?linkaction=change">Change<span class="govuk-visually-hidden"> order ID</span></a></dd>
+				</div>
+				{% endif %}
+			</dl>
+
+
+			<h2 class="govuk-heading-m">Reason for taking this test</h2>
+			<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+
+				{% if data['test-for-work'] %}
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">Test for your job?</dt>
+					<dd class="govuk-summary-list__value">{{ data['test-for-work'] }}</dd>
+					<dd class="govuk-summary-list__actions"><a class="govuk-link" href="test-for-work?linkaction=change">Change<span class="govuk-visually-hidden"> who the kit is registed for</span></a></dd>
+				</div>
+				{% endif %}
+				
+				{% if data['test-reason'] == "another reason" %}
+					{% if data['test-reason-continued'] %}
+					<div class="govuk-summary-list__row">
+						<dt class="govuk-summary-list__key">Why test taken</dt>
+						<dd class="govuk-summary-list__value">{{ data['test-reason-continued'] }}</dd>
+						<dd class="govuk-summary-list__actions"><a class="govuk-link" href="test-reason-continued?linkaction=change">Change<span class="govuk-visually-hidden"> barcode number</span></a></dd>
+					</div>
+					{% endif %}				
+				{% else %}
+					{% if data['test-reason'] %}
+					<div class="govuk-summary-list__row">
+						<dt class="govuk-summary-list__key">How to get results</dt>
+						<dd class="govuk-summary-list__value">{{ data['test-reason'] }}</dd>
+						<dd class="govuk-summary-list__actions">
+						<a class="govuk-link" href="test-reason?linkaction=change">Change<span class="govuk-visually-hidden"> how to get results</span></a></dd>
+					</div>
+					{% endif %}
+				{% endif %}
+				
 			</dl>      
 			
-			<h2 class="govuk-heading-m">Now send your information</h2>
-			<p class="govuk-body">By sending this information, you confirm that as far as you know, the information you entered is correct.</p>
-
-			
-
-
 			{{ govukButton({
 				text: "Continue",
 				href: "result"				

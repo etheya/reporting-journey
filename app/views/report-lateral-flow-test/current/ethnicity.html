@@ -1,0 +1,141 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Which one best describes your background?" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<p>This will help us understand how coronavirus is affecting people of different ethnic backgrounds.</p>
+
+			<form method="post" action="home-address-lookup" >
+
+				{% if data['ethnicity-group'] == "Asian or Asian British" %}
+
+					{{ govukRadios({					
+						idPrefix: "ethnicity",
+						name: "ethnicity",
+						fieldset: {
+							legend: {
+								text: "Tell us why you took the test (continued)",
+								isPageHeading: false,
+								classes: "govuk-visually-hidden"
+							}
+						},					
+						items: [
+						{ value: "Bangladeshi", text: "Bangladeshi", checked: checked("ethnicity", "Bangladeshi") },
+						{ value: "Chinese", text: "Chinese", checked: checked("ethnicity", "Chinese") },
+						{ value: "Indian", text: "Indian",  checked: checked("ethnicity", "Indian") },
+						{ value: "Pakistani", text: "Pakistani",  checked: checked("ethnicity", "Pakistani") },
+						{ value: "Another Asian background", text: "Another Asian background", checked: checked("ethnicity", "Another Asian background") },
+						{ divider: "or" },
+						{ value: "Prefer not to say", text: "Prefer not to say",  checked: checked("ethnicity", "Prefer not to say") }
+						]
+					}) }}
+
+				{% elif data['ethnicity-group'] == "Black, African, Black British or Caribbean" %}
+
+					{{ govukRadios({					
+						idPrefix: "ethnicity",
+						name: "ethnicity",
+						fieldset: {
+							legend: {
+								text: "Tell us why you took the test (continued)",
+								isPageHeading: false,
+								classes: "govuk-visually-hidden"
+							}
+						},					
+						items: [
+						{ value: "African", text: "African", checked: checked("ethnicity", "African") },
+						{ value: "Carribean", text: "Carribean", checked: checked("ethnicity", "Carribean") },
+						{ value: "Another Black background", text: "Another Black background",  checked: checked("ethnicity", "Another Black background") },						
+						{ divider: "or" },
+						{ value: "Prefer not to say", text: "Prefer not to say",  checked: checked("ethnicity", "Prefer not to say") }
+						]
+					}) }}
+
+				{% elif data['ethnicity-group'] == "Mixed or multiple ethnic groups" %}
+
+					{{ govukRadios({					
+						idPrefix: "ethnicity",
+						name: "ethnicity",
+						fieldset: {
+							legend: {
+								text: "Tell us why you took the test (continued)",
+								isPageHeading: false,
+								classes: "govuk-visually-hidden"
+							}
+						},					
+						items: [
+						{ value: "Asian and White", text: "Asian and White", checked: checked("ethnicity", "Asian and White") },
+						{ value: "Black African and White", text: "Black African and White", checked: checked("ethnicity", "Black African and White") },
+						{ value: "Black Carribean and White", text: "Black Carribean and White",  checked: checked("ethnicity", "Black Carribean and White") },						
+						{ value: "Another Mixed background", text: "Another Mixed background",  checked: checked("ethnicity", "Another Mixed background") },						
+						{ divider: "or" },
+						{ value: "Prefer not to say", text: "Prefer not to say",  checked: checked("ethnicity", "Prefer not to say") }
+						]
+					}) }}
+
+				{% elif data['ethnicity-group'] == "White" %}
+
+					{{ govukRadios({					
+						idPrefix: "ethnicity",
+						name: "ethnicity",
+						fieldset: {
+							legend: {
+								text: "Tell us why you took the test (continued)",
+								isPageHeading: false,
+								classes: "govuk-visually-hidden"
+							}
+						},					
+						items: [
+						{ value: "British, English, Northern Irish, Scottish, or Welsh", text: "British, English, Northern Irish, Scottish, or Welsh", checked: checked("ethnicity", "British, English, Northern Irish, Scottish, or Welsh") },
+						{ value: "Irish", text: "Irish", checked: checked("ethnicity", "Irish") },
+						{ value: "Irish Traveller or Gypsy", text: "Irish Traveller or Gypsy",  checked: checked("ethnicity", "Irish Traveller or Gypsy") },						
+						{ value: "Another White background", text: "Another White background",  checked: checked("ethnicity", "Another White background") },						
+						{ divider: "or" },
+						{ value: "Prefer not to say", text: "Prefer not to say",  checked: checked("ethnicity", "Prefer not to say") }
+						]
+					}) }}
+
+				{% elif data['ethnicity-group'] == "Another ethnic group" %}
+
+					{{ govukRadios({					
+						idPrefix: "ethnicity",
+						name: "ethnicity",
+						fieldset: {
+							legend: {
+								text: "Tell us why you took the test (continued)",
+								isPageHeading: false,
+								classes: "govuk-visually-hidden"
+							}
+						},					
+						items: [
+						{ value: "Arab", text: "Arab", checked: checked("ethnicity", "Arab") },
+						{ value: "Another ethnic background", text: "Another ethnic background",  checked: checked("ethnicity", "Another ethnic background") },						
+						{ divider: "or" },
+						{ value: "Prefer not to say", text: "Prefer not to say",  checked: checked("ethnicity", "Prefer not to say") }
+						]
+					}) }}
+
+				{% endif %}
+
+				
+
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            
+  		</div>
+	</div>    
+
+{% endblock %}

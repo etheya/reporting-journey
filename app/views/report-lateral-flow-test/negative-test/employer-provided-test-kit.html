@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Did your employer provide the test kit?" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			
+
+			<form method="post" action="occupation" >
+
+				{{ govukRadios({					
+					idPrefix: "employer-provide-test-kit",
+					name: "employer-provide-test-kit",
+					fieldset: {
+						legend: {
+							text: "Tell us why you took the test (continued)",
+							isPageHeading: false,
+							classes: "govuk-visually-hidden"
+					  	}
+					},					
+					items: [
+					  { value: "Yes, redirect(organisation-id)", text: "Yes",  checked: checked("employer-provide-test-kit", "Yes") },
+					  { value: "No", text: "No",  checked: checked("employer-provide-test-kit", "No") }					  
+					]
+				}) }}
+
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            
+  		</div>
+	</div>    
+
+{% endblock %}

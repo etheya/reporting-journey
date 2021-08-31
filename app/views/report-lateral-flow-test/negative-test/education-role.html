@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Which of these best describes you?" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<form method="post" action="test-date" >
+
+				{{ govukRadios({					
+					idPrefix: "best-describes-as",
+					name: "best-describes-as",
+					fieldset: {
+						legend: {
+							text: "Tell us why you took the test (continued)",
+							isPageHeading: false,
+							classes: "govuk-visually-hidden"
+					  	}
+					},					
+					items: [
+					  { value: "employed, redirect(institution-lookup)", text: "Employed by a nursery, school, college, university, childcare provider or other education provider",  checked: checked("best-describes-as", "employed") },
+					  { value: "childminder", text: "Working as a childminder",  checked: checked("best-describes-as", "childminder") }					  
+					]
+				}) }}				
+				
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            
+  		</div>
+	</div>    
+
+{% endblock %}

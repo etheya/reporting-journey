@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Tell us why you took this test" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<form method="post" action="test-reason-continued" >
+
+				{{ govukRadios({					
+					idPrefix: "test-reason",
+					name: "test-reason",
+					fieldset: {
+						legend: {
+							text: "Tell us why you took the test (continued)",
+							isPageHeading: false,
+							classes: "govuk-visually-hidden"
+					  	}
+					},					
+					items: [
+					  { value: "School, redirect(institution-lookup)", text: "To go to school, college or university",  checked: checked("test-reason", "School") },
+					  { value: "School household, redirect(institution-lookup)", text: "Someone in the household goes to school or college",  checked: checked("test-reason", "School household") },
+					  { value: "Support bubble, redirect(institution-lookup)", text: "As someone in a support or childcare bubble of a student",  checked: checked("test-reason", "Support bubble") },
+					  { value: "Foster carer, redirect(test-date)", text: "As a foster carer",  checked: checked("test-reason", "Foster carer") },
+					  { divider: "or" },
+					  { value: "Another reason", text: "Another reason",  checked: checked("test-reason", "Another reason") }
+					]
+				}) }}
+
+
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            
+  		</div>
+	</div>    
+
+{% endblock %}

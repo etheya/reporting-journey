@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Would you like to sign in or create an account to save your details?" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<form method="post" action="result" >
+			<!-- <form method="post" action="registering-for" > -->
+
+				{{ govukRadios({					
+					idPrefix: "create-an-account",
+					name: "create-an-account",
+					fieldset: {
+						legend: {
+							text: "Tell us why you took the test (continued)",
+							isPageHeading: false,
+							classes: "govuk-visually-hidden"
+					  	}
+					},					
+					items: [
+					  { value: "Yes, redirect(https://access.login.nhs.uk/enter-email)", text: "Sign in or create an account", hint: { text: "Creating an account takes 2 minutes. You can add all household members and save 5 minutes when reporting each result." }, checked: checked("create-an-account", "Yes") },
+					  { value: "No", text: "Continue without an account", hint: { text: "Your details won't be saved for future tests and all information will have to be re-entered." }, checked: checked("create-an-account", "No") }					  
+					]
+				}) }}
+
+
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            
+  		</div>
+	</div>    
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "What's the test strip ID number?" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<p>The ID number is printed on the test strip (near the QR code)</p>
+			
+			{{ govukDetails({
+				summaryText: "What does a test strip ID or QR code look like?",
+				text: ""
+			}) }}
+
+			{{ govukButton({
+				text: "Scan test strip QR code",
+				classes: "govuk-button--secondary",
+				href: "barcode/scan"
+			}) }}
+
+
+			<form method="post" action="name" >
+				
+				{{ govukInput({
+					label: { text: "Test strip ID number" },
+					id: "test-strip-id",
+					name: "test-strip-id",
+					value: data['test-strip-id']
+				}) }}
+
+				{{ govukInput({
+					label: { text: "Confirm test strip ID number" },
+					id: "test-strip-id-confirm",
+					name: "test-strip-id-confirm",
+					value: data['test-strip-id-confirm']
+				}) }}
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            
+  		</div>
+	</div>    
+
+{% endblock %}

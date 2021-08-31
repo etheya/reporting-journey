@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% if data['test-result'] == "Negative" %}
+
+	{% if data['registering-for'] == "Someone else" %}
+		{% set pageHeading = "What’s their age group?" %}
+	{% else %}
+		{% set pageHeading = "What’s your age group?" %}
+	{% endif %}
+
+{% else %}
+
+	{% if data['registering-for'] == "Someone else" %}
+		{% set pageHeading = "What's their date of birth?" %}
+	{% else %}
+		{% set pageHeading = "What's your date of birth?" %}
+	{% endif %}
+
+{% endif %}
+
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<form method="post" action="gender" >				
+			
+			{% if data['test-result'] == "Negative" %}
+			
+				{{ govukRadios({					
+					idPrefix: "age-group-negative-test",
+					name: "age-group-negative-test",
+					fieldset: {
+						legend: {
+							text: "Tell us why you took the test (continued)",
+							isPageHeading: false,
+							classes: "govuk-visually-hidden"
+						}
+					},					
+					items: [
+					{ value: "under 18", text: "under 18",  checked: checked("age-group-negative-test", "under 18") },
+					{ value: "18 to 24", text: "18 to 24",  checked: checked("age-group-negative-test", "18 to 24") },
+					{ value: "26 to 34", text: "26 to 34",  checked: checked("age-group-negative-test", "26 to 34") },
+					{ value: "35 to 49", text: "35 to 49",  checked: checked("age-group-negative-test", "35 to 49") },
+					{ value: "50 to 64", text: "50 to 64",  checked: checked("age-group-negative-test", "50 to 64") },
+					{ value: "65 or above", text: "65 or above",  checked: checked("age-group-negative-test", "65 or above") }
+					
+					]
+				}) }}	
+
+			{% else %}								
+
+					{{ govukDateInput({
+						id: "dob",
+						namePrefix: "dob",
+						fieldset: {
+							legend: {
+							text: "What is your date of birth?",
+							isPageHeading: false,
+							classes: "govuk-visually-hidden"
+							}
+						},
+						hint: {
+							text: "For example, 31 3 1980"
+						},
+						items: [
+							{ name: "day", classes: "govuk-input--width-2", autocomplete: "bday-day", value: data['dob-day'] },
+							{ name: "month", classes: "govuk-input--width-2", autocomplete: "bday-month", value: data['dob-month'] },
+							{ name: "year", classes: "govuk-input--width-4", autocomplete: "bday-year", value: data['dob-year'] }
+						]
+					}) }}   				  
+				{% endif %}
+
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+
+			
+            
+  		</div>
+	</div>    
+
+{% endblock %}

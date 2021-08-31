@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% if data['registering-for'] == "Someone else" %}
+	{% set pageHeading = "Select the area they work in" %}
+{% else %}
+	{% set pageHeading = "Select the area you work in" %}
+{% endif %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<form method="post" action="trust-name" >
+
+				{{ govukRadios({					
+					idPrefix: "area-user-works-in",
+					name: "area-user-works-in",
+					fieldset: {
+						legend: {
+							text: "Tell us why you took the test (continued)",
+							isPageHeading: false,
+							classes: "govuk-visually-hidden"
+					  	}
+					},					
+					items: [
+					  { value: "acute hospital", text: "Acute hospital trust",  checked: checked("area-user-works-in", "acute hospital") },
+					  { value: "ambulance", text: "Ambulance service trust (England and Northern Ireland only)",  checked: checked("area-user-works-in", "ambulance") },
+					  { value: "health board, redirect(institution-lookup)", text: "Any Local Health Board in Wales or NHS Trust in Wales",  checked: checked("area-user-works-in", "health board") },
+					  { value: "health trust, redirect(test-date)", text: "Community health trust",  checked: checked("area-user-works-in", "health trust") },
+					  { value: "pharmacy, redirect(work-postcode)", text: "Community pharmacy",  checked: checked("area-user-works-in", "pharmacy") },
+					  { value: "dentistry, redirect(work-postcode)", text: "Dentistry",  checked: checked("area-user-works-in", "dentistry") },
+					  { value: "general practice, redirect(work-postcode)", text: "General Practice",  checked: checked("area-user-works-in", "general practice") },
+					  { value: "mental health", text: "Mental health trust",  checked: checked("area-user-works-in", "mental health") },
+					  { value: "optometry, redirect(work-postcode)", text: "Optometry",  checked: checked("area-user-works-in", "optometry") },
+					  { divider: "or" },
+					  { value: "other, redirect(work-postcode)", text: "Other NHS organisations and special health authorities",  checked: checked("area-user-works-in", "other") }
+					]
+				}) }}				
+				
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            
+  		</div>
+	</div>    
+
+{% endblock %}

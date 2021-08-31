@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "What's the name or postcode of the education provider?" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<p>Enter the name or postcode of the education provider, and select from the options provided.</p>
+			<p>For example, this may include a nursery, school, college, university, childcare provider or other education provider.</p>
+
+		
+			<form method="post" action="test-date" >
+				
+
+				{{ govukInput({
+					label: {
+					  text: "Name or postcode of education provider"
+					},
+					hint: {
+						text: "Enter 3 or more characters"
+					},										
+					id: "education-provider",
+					name: "education-provider",
+					value: data['education-provider']
+				}) }}				  
+
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            
+			<p class="govuk-!-font-size-16"><a href="institution-details" >I cannot find the education provider</a></p>
+  		</div>
+	</div>    
+
+{% endblock %}

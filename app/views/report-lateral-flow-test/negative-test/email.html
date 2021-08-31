@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Do you have an email address?" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<p>If you are a parent or guardian reporting for a child, you can use your own email address.</p>
+			<p>Contact details are only used to send messages related to this service, such as an email confirming a test result has been successfully reported.</p>
+			
+			<p>If a test result is positive, the NHS may also use the details you supply for <a href="https://test-for-coronavirus.service.gov.uk/report-result/contact-mobile-number">contact tracing</a>.</p>
+			
+
+
+
+			<form method="post" action="contact-mobile-number" >
+				
+				{% set emailHtml %}
+					{{ govukInput({
+					id: "email-address",
+					name: "email-address",
+					type: "email",
+					autocomplete: "email",
+					spellcheck: false,
+					classes: "govuk-!-width-two-thirds",
+					label: {
+						text: "Email address"
+					},
+					value: data['email-address']
+					}) }}
+
+					{{ govukInput({
+						id: "confirm-email-address",
+						name: "confirm-email-address",
+						type: "email",
+						autocomplete: "email",
+						spellcheck: false,
+						classes: "govuk-!-width-two-thirds",
+						label: {
+							text: "Confirm email address"
+						},
+						value: data['confirm-email-address']
+						}) }}
+				{% endset -%}
+
+
+				{{ govukRadios({					
+					idPrefix: "have-email-address",
+					name: "have-email-address",
+					fieldset: {
+						legend: {
+							text: "Tell us why you took the test (continued)",
+							isPageHeading: false,
+							classes: "govuk-visually-hidden"
+					  	}
+					},					
+					items: [
+					  { value: "Yes", text: "Yes, I have an email address", conditional: { html: emailHtml }, checked: checked("have-email-address", "Yes") },
+					  { value: "No", text: "No, I do not have an email address",  checked: checked("have-email-address", "No") }					  
+					]
+				}) }}
+
+			{{ govukButton({
+				text: "Continue"				
+			}) }}
+
+		</form> 
+
+  		</div>
+	</div>    
+
+{% endblock %}

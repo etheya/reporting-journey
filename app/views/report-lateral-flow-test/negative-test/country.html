@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% if data['registering-for'] == "Someone else" %}
+	{% set pageHeading = "Where in the UK do they live?" %}
+{% else %}
+	{% set pageHeading = "Where in the UK do you live?" %}
+{% endif %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			{% if data['test-result'] == "Negative" %}
+				<form method="post" action="test-date" >
+			{% else %}
+				<form method="post" action="test-for-work" >
+			{% endif %}
+				
+				
+				{{ govukRadios({					
+					idPrefix: "where-you-live",
+					name: "where-you-live",
+					fieldset: {
+						legend: {
+							text: "Tell us why you took the test (continued)",
+							isPageHeading: false,
+							classes: "govuk-visually-hidden"
+					  	}
+					},					
+					items: [
+					  { value: "England", text: "England",  checked: checked("where-you-live", "England") },
+					  { value: "Scotland", text: "Scotland",  checked: checked("where-you-live", "Scotland") },
+					  { value: "Northern Ireland", text: "Northern Ireland",  checked: checked("where-you-live", "Northern Ireland") },
+					  { value: "Wales", text: "Wales",  checked: checked("where-you-live", "Wales") }
+					  
+					]
+				}) }}	
+
+
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            
+  		</div>
+	</div>    
+
+{% endblock %}

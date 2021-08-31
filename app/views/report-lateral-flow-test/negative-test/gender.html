@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Which of the following is on your medical records?" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<p>We are asking this question so in future, your household member's result can be saved to their GP record.</p>
+
+			{% if data['test-result'] == "Negative" %}
+			<form method="post" action="check-answers" >
+			{% else %}
+			<form method="post" action="ethnicity-group" >
+			{% endif %}
+
+				{{ govukRadios({					
+					idPrefix: "employer-provide-test-kit",
+					name: "employer-provide-test-kit",
+					fieldset: {
+						legend: {
+							text: "Tell us why you took the test (continued)",
+							isPageHeading: false,
+							classes: "govuk-visually-hidden"
+					  	}
+					},					
+					items: [
+					  { value: "Female, redirect(organisation-id)", text: "Female",  checked: checked("employer-provide-test-kit", "Yes") },
+					  { value: "Male", text: "Male",  checked: checked("employer-provide-test-kit", "Male") },
+					  { value: "Other", text: "Other / Not specified / I do not know",  checked: checked("employer-provide-test-kit", "Other") }
+					]
+				}) }}
+
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            
+  		</div>
+	</div>    
+
+{% endblock %}

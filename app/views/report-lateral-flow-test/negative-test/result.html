@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "What was the result of the test?" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<p>Use the test kit instructions to answer this.</p>
+
+			<form method="post" action="registering-for" >
+				
+
+				{{ govukRadios({					
+					idPrefix: "test-result",
+					name: "test-result",
+					fieldset: {
+						legend: {
+							text: "Tell us why you took the test (continued)",
+							isPageHeading: false,
+							classes: "govuk-visually-hidden"
+					  	}
+					},					
+					items: [
+					  { value: "Positive", text: "Positive result (likely to be infectious)",  checked: checked("test-result", "Positive") },
+					  { value: "Negative", text: "Negative result (not likely to be infectious)",  checked: checked("test-result", "Negative") },					  
+					  { value: "Void", text: "Void or invalid result (the test did not work properly)",  checked: checked("test-result", "Void") }					  
+					]
+				}) }}
+
+			{{ govukButton({
+				text: "Continue"				
+			}) }}
+
+			<details class="govuk-details" data-module="govuk-details">
+				<summary class="govuk-details__summary">
+				  <span class="govuk-details__summary-text">
+					If you had a problem taking the test
+				  </span>
+				</summary>
+				<div class="govuk-details__text">
+					<a href="https://nhstt.fra1.qualtrics.com/jfe/form/SV_bqskiabRU9HTFkO">Report any problems online</a> or call 119 (free from mobiles and landlines). Lines are open 7am to 11pm.
+				</div>
+			  </details>
+
+		</form> 
+
+  		</div>
+	</div>    
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Enter the name and postcode of the education provider" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+					
+		
+			<form method="post" action="" >
+				
+
+				{{ govukInput({
+					label: {
+					  text: "Education provider name"
+					},
+					hint: {
+						text: "Enter 3 or more characters"
+					},										
+					classes: "govuk-!-width-one-half",
+					id: "education-provider-name",
+					name: "education-provider-name",
+					value: data['education-provider-name']
+				}) }}	
+				
+				{{ govukInput({
+					label: {
+					  text: "Education provider postcode"
+					},									
+					classes: "govuk-!-width-one-third",	
+					id: "education-provider-postcode",
+					name: "education-provider-postcode",
+					value: data['education-provider-postcode']
+				}) }}	
+
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            			
+  		</div>
+	</div>    
+
+{% endblock %}

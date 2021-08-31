@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "When was the test taken?" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			{{ govukInsetText({
+				text: "Report a result as soon as possible on the day the test is taken (and no later than 24 hours)."
+			}) }}
+			
+
+			{% if data['test-result'] == "Negative" %}
+			<form method="post" action="age" >
+			{% else %}
+			<form method="post" action="barcode" >
+			{% endif %}
+
+				{{ govukRadios({					
+					idPrefix: "test-date-taken",
+					name: "test-date-taken",
+					fieldset: {
+						legend: {
+							text: "Select a date",
+							isPageHeading: false,
+							classes: "govuk-fieldset__legend--s"
+					  	}
+					},					
+					items: [
+					  { value: "31 August 2021", text: "Today, 31 August 2021",  checked: checked("test-date-taken", "31 August 2021") },
+					  { value: "30 August 2021", text: "Yesterday, 30 August 2021",  checked: checked("test-date-taken", "30 August 2021") }
+					]
+				}) }}
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            
+  		</div>
+	</div>    
+
+{% endblock %}

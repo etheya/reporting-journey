@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "What's your NHS number?" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<p>An NHS number is a 10 digit number, for example 867 406 5600.</p>
+			
+			
+			<form method="post" action="email" >
+				
+
+				{{ govukInput({
+					label: {
+						text: "NHS number"
+					},
+					id: "nhs-number",
+					classes: "govuk-!-width-one-half",
+					name: "nhs-number",
+					value: data['nhs-number']
+				}) }}				  
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            
+  		</div>
+	</div>    
+
+{% endblock %}

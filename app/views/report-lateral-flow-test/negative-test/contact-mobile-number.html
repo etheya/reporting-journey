@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "What's your mobile number?" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<p>If you are a parent or guardian reporting for a child, you can use your own mobile number.</p>
+			<p>Contact details are only used to send messages related to this service, such as a text message confirming a test result has been successfully reported.</p>
+			
+			<p>If a test result is positive, the NHS may also use the details you supply for <a href="https://test-for-coronavirus.service.gov.uk/report-result/contact-mobile-number">contact tracing</a>.</p>
+			
+
+			{{ govukDetails({
+				summaryText: "Don't have a mobile number?",
+				text: "Call 119 (free from mobiles and landlines). Lines are open 7am to 11pm."
+			  }) }}
+
+			<form method="post" action="check-answers" >
+				
+
+				{{ govukInput({
+					label: {
+						text: "Mobile phone number"
+					},
+					id: "mobile-number",
+					classes: "govuk-!-width-one-third",
+					name: "mobile-number",
+					value: data['mobile-number']
+				}) }}	
+
+				{{ govukInput({
+					label: {
+						text: "Confirm mobile phone number"
+					},
+					id: "confirm-mobile-number",
+					classes: "govuk-!-width-one-third",
+					name: "confirm-mobile-number",
+					value: data['confirm-mobile-number']
+				}) }}	
+
+			{{ govukButton({
+				text: "Continue"				
+			}) }}
+
+		</form> 
+
+  		</div>
+	</div>    
+
+{% endblock %}

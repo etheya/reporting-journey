@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% set showBackLink = false %}
+{% set showBreadcrumb = true %}
+
+{% set pageHeading = "Report a COVID-19 rapid lateral flow test result" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<p>Use this service to report your result to the NHS after using a rapid lateral flow test kit to check if you’re infectious with coronavirus (COVID-19).</p>
+			<p>A rapid lateral flow test is a coronavirus test you do yourself. It shows you the result on a handheld device that comes with the test.</p>
+
+			<p>Report the result:</p>
+			<ul class="govuk-list govuk-list--bullet">
+				<li>every time you use a rapid lateral flow test kit</li>
+				<li>as soon as possible after you get the result</li>				
+			</ul>
+			<p>You cannot report a result after more than 24 hours.</p>
+			<p>You can only report one result at a time.</p>
+
+			{{ govukButton({
+				text: "Start now",
+				href: "login-choice",
+				isStartButton: true,
+				classes: "govuk-!-margin-bottom-9"
+			}) }}
+
+
+			<h2 class="govuk-heading-m">Before you start</h2>
+			<p>To use this service, you need:</p>
+			<ul class="govuk-list govuk-list--bullet">
+				<li>the QR code or ID number printed on the test strip (the part of the kit that shows your result)</li>
+				<li>a mobile phone number so we can text you to confirm we’ve got your result</li>
+			</ul>
+			
+			<h2 class="govuk-heading-m">Get help to report a test result</h2>
+			<p>If you cannot use the online service, call 119 (free from mobiles and landlines).</p>
+			<p>Lines are open every day, 7am to 11pm. 119 provides support in 200 languages.</p>
+			<p><a href="https://interpreternow.co.uk/nhs119">InterpreterNow</a> is a free online British Sign Language (BSL) interpreter service for 119.</p>
+
+			<h2 class="govuk-heading-m">If you have a problem with your test kit</h2>
+			<p>Call 119 or <a href="https://nhstt.fra1.qualtrics.com/jfe/form/SV_bqskiabRU9HTFkO">report the problem online</a>.</p>
+
+			<h2 class="govuk-heading-m">Why you should report your results</h2>
+			<p>Reporting results helps to:</p>
+			<ul class="govuk-list govuk-list--bullet">
+				<li>reduce infection rates in your community</li>
+				<li>protect people at higher risk of infection</li>
+				<li>prevent and reduce the spread of the virus</li>
+				<li>find out if you’re infectious (you may not have symptoms)</li>
+			</ul>
+			
+			<h2 class="govuk-heading-m">Self-isolation</h2>
+			<p>You and your household may need to self-isolate depending on your result.</p>
+
+			<p><a href="https://www.nhs.uk/conditions/coronavirus-covid-19/self-isolation-and-treatment/">Get advice about how to self-isolate</a>.</p>
+
+			<h2 class="govuk-heading-m">How NHS uses your data</h2>
+			<p><a href="https://www.gov.uk/government/publications/coronavirus-covid-19-testing-privacy-information">Find out how NHS uses your data</a>.</p>
+
+
+
+
+			
+            
+  		</div>
+	</div>    
+
+{% endblock %}

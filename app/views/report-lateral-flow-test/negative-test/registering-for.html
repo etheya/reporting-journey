@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Who are you reporting a result for?" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<form method="post" action="country" >
+
+				{{ govukRadios({					
+					idPrefix: "registering-for",
+					name: "registering-for",
+					fieldset: {
+						legend: {
+							text: "Tell us why you took the test (continued)",
+							isPageHeading: false,
+							classes: "govuk-visually-hidden"
+					  	}
+					},					
+					items: [
+					  { value: "Myself", text: "Myself",  checked: checked("registering-for", "Myself") },
+					  { value: "Someone else", text: "Someone else",  checked: checked("registering-for", "Someone else") }					  					  
+					]
+				}) }}	
+
+
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            
+  		</div>
+	</div>    
+
+{% endblock %}

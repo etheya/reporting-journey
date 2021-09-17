@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% set registersName = data['first-name'] %}
+
+{% if data['registering-test-kit'] == "No" %}
+    {% if ((data['first-name'] ) and (data['last-name'] )) %}        
+        {% set pageHeading = "What is " + registersName + "’s date of birth?" %}
+    {% else %}    
+        {% set pageHeading = "What is their date of birth?" %}
+    {% endif %}
+{% else %}
+    {% set pageHeading = "What is your date of birth?" %}
+{% endif %}
+
+
+
+{% set pageSection = "" %}
+ 
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block beforeContent %}
+    {% include "includes/phase-banner.html" %}
+    {% include "includes/back.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+
+        
+        {% if data['linkaction'] == "change" %}
+            <form method="post" action="check-your-answers" >
+        {% else %}
+            <form method="post" action="address" >
+        {% endif %}
+        
+            
+            {{ govukDateInput({
+                id: "dob",
+                namePrefix: "dob",
+                fieldset: {
+                    legend: {
+                    text: "What is your date of birth?",
+                    isPageHeading: false,
+                    classes: "govuk-visually-hidden"
+                    }
+                },
+                hint: {
+                    text: "For example, 31 3 1980"
+                },
+                items: [
+                    { name: "day", classes: "govuk-input--width-2", autocomplete: "bday-day", value: data['dob-day'] },
+                    { name: "month", classes: "govuk-input--width-2", autocomplete: "bday-month", value: data['dob-month'] },
+                    { name: "year", classes: "govuk-input--width-4", autocomplete: "bday-year", value: data['dob-year'] }
+                ]
+            }) }}                            
+
+            {{ govukButton({
+                text: "Continue"
+            }) }}
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

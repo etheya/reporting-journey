@@ -1,0 +1,85 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block beforeContent %}
+
+	{{ govukBackLink({
+		text: "Back",
+		href: "#"
+  	}) }}
+{% endblock %}
+
+
+{% block content %}
+
+
+	<div class="govuk-grid-row">
+    	<div class="govuk-grid-column-two-thirds">
+      		<h1 class="govuk-heading-xl">Do you want to take part in an NHS evaluation study?</h1>
+      
+			<p>This evaluation helps the NHS understand the accuracy of lateral flow tests. You can help by taking a PCR test with your lateral flow test.</p>
+			
+			<details class="govuk-details" data-module="govuk-details">
+				<summary class="govuk-details__summary">
+				  <span class="govuk-details__summary-text">
+					What would i need to do?
+				  </span>
+				</summary>
+				<div class="govuk-details__text">
+					<p>We’ll send you a PCR test with your rapid lateral flow test. The PCR test is another nose and throat swab test.</p>
+					<p>Your test pack will come with simple step-by-step instructions on how to complete the tests and report the results online.</p>
+					<p>The NHS will use the test results to measure how accurate rapid lateral tests are.</p>
+					<p>Your data will be anonymous.</p>
+	
+				</div>
+			</details>
+
+
+			
+
+			<form method="post" action="" >
+			{{ govukRadios({
+				
+				idPrefix: "changed-name",
+				name: "changed-name",
+				fieldset: {
+				  legend: {
+					text: "Do you want to take part in an NHS evaluation study?",
+					isPageHeading: false,
+					classes: "govuk-visually-hidden"
+				  }
+				},
+				hint: {
+				  text: ""
+				},
+				items: [
+				  {
+					value: "yes",
+					text: "Yes"
+				  },
+				  {
+					value: "no",
+					text: "No"
+				  }
+				]
+			  }) }}
+			  
+			  {{ govukButton({
+				text: "Continue"
+			  }) }}
+
+			</form>
+
+            
+
+      
+      
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Get a free PCR test to check if you have coronavirus (COVID-19)" %}
+{% set pageSection = "Prototype" %}
+ 
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+
+        <ul class="govuk-list">
+            <li>Last updated: 22 June 2021</li> 
+            <li>Prototype version: {{releaseVersion}}</li>
+        </ul>
+
+        <p>If you have any of these 3 coronavirus (COVID-19) symptoms, use this service to get a polymerase chain reaction (PCR) test as soon as possible.</p>         
+        
+        <form method="post" action="#" >
+            <input type="hidden" name="baseline" value="No" id="baseline" />
+            
+            <!-- Current service not yet re prototyped -->
+            {{ govukButton({
+                text: "Current live version",
+                classes: "govuk-!-margin-right-2"
+            }) }}           
+
+            <!-- Current service not yet re prototyped -->
+            <!-- {{ govukButton({
+                text: "View page by page listings",
+                href: "admin/listings",
+                classes: "govuk-button--secondary"
+            }) }} -->
+        </form>             
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">      
+
+        <h2 class="govuk-heading-m">Other iterations</h2>
+        <p>Work done by TEAM NAME including accessibility changes and amends to the service, any user research undertaken and bug fixes.</p>
+
+        <table class="govuk-table">
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__header" scope="col" width="25%">Iteration</th>
+                    <th class="govuk-table__header" scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                <!-- <tr class="govuk-table__row">
+                    <td class="govuk-table__cell"><a href="#">1.0</a></td>
+                    <td class="govuk-table__cell">Service as it currently is in live May 2021</td>
+                </tr> -->
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell"><a href="blood-clotting-disorder">Antibody test</a></td>
+                    <td class="govuk-table__cell">Review and suggested changes for the anitbody test screen.</td>
+                </tr>                                
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+{% endblock %}

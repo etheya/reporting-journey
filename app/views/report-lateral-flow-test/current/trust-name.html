@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "What's the name of the NHS trust or Health Board?" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<p>Start entering the name of the NHS trust or Health Board and choose from the options provided. Or, enter the name manually.</p>						
+			
+			<form method="post" action="test-date" >
+				
+
+				{{ govukInput({
+					label: {
+						text: "What's the name of the NHS trust or Health Board?",
+						classes: "govuk-visually-hidden"
+					},
+					id: "trust-health-board-name",					
+					name: "trust-health-board-name",
+					value: data['trust-health-board-name']
+				}) }}				  
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            
+  		</div>
+	</div>    
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block head %}
+  <!--[if lte IE 8]><link href="/public/stylesheets/unbranded-ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
+  <!--[if gt IE 8]><!--><link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
+
+  {% for stylesheetUrl in extensionConfig.stylesheets %}
+    <link href="{{ stylesheetUrl }}" rel="stylesheet" type="text/css" />
+  {% endfor %}
+{% endblock %}
+
+{% block content %}
+
+<div class="pseudo-bg"></div>
+<div class="pseudo-template">
+    
+	<p>Answer 6 questions to register a coronavirus (COVID-19) PCR test so you can get the results.</p>
+	<p>If you are registering for more than one person, you will need to register each kit separately.</p>
+
+	<p class="govuk-!-font-weight-bold">Question 1 of 6</p>
+	<p>Are you registering for yourself?</p>
+	
+	<form method="post" action="full-name">
+		<div class="govuk-form-group">
+			<input class="govuk-input" id="register-for" name="register-for"  type="text">
+		</div>
+		
+		{{ govukButton({
+			text: "Send"        
+		}) }}	
+	</form>        
+        
+</div>
+
+{% endblock %}
+
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}

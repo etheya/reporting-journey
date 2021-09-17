@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Check your answers" %}
+{% set pageSection = "" %}
+ 
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block beforeContent %}
+    {% include "includes/phase-banner.html" %}
+    
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        
+    	{{ govukPanel({
+        	titleText: "Registration complete"        
+      	}) }}
+
+      	{# <p>We have sent you a confirmation email.</p> #}
+      	<p></p>
+      
+      	<h2 class="govuk-heading-m">What to do next</h2>
+      	<p>Follow the instructions in your PCR home test kit for taking a sample - you can <a href="https://www.youtube.com/watch?v=zCqo7MhQT6U" class="govuk-link" rel="noreferrer noopener" target="_blank">watch a video about how to do a PCR test (opens in new tab)</a>.</p>
+      	<p>If you are registering multiple test kits, make sure each person uses the test kit registered to them.  This is so they get the correct results. </p>      
+      	<p><a href="do-you-have-an-order-id">Register another test kit</a></p>
+
+      	<h2 class="govuk-heading-m">Help us improve our service</h2>
+      	<p><a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)</p>
+
+    </div>
+</div>
+
+{% endblock %}

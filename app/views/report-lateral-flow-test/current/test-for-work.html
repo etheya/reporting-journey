@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Did you take this test for your job?" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<p>This also applies to temporary staff and volunteers</p>
+
+			<form method="post" action="test-reason" >
+
+				{{ govukRadios({					
+					idPrefix: "test-for-work",
+					name: "test-for-work",
+					fieldset: {
+						legend: {
+							text: "Tell us why you took the test (continued)",
+							isPageHeading: false,
+							classes: "govuk-visually-hidden"
+					  	}
+					},					
+					items: [
+					  { value: "Yes, redirect(about-work)", text: "Yes",  checked: checked("test-for-work", "Yes") },
+					  { value: "No", text: "No",  checked: checked("test-for-work", "No") }					  
+					]
+				}) }}
+
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            
+  		</div>
+	</div>    
+
+{% endblock %}

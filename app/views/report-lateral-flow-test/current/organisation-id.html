@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Enter the unique organisation number (UON)" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<p>This is a reference number for the employer, organisation or social care service. It is 8 digits and sometimes called a “UON”.</p>
+			
+			<details class="govuk-details" data-module="govuk-details">
+				<summary class="govuk-details__summary">
+					<span class="govuk-details__summary-text">What to do if you cannot find this number</span>
+				</summary>
+				<div class="govuk-details__text">
+					<p>Get the UON from the employer or organisation that gave you the test kit.</p>
+					<p>You can also <a href="#" target="_blank">find the UON online (opens in a new tab)</a>.</p>				
+					<p>If you still need help, call 119 (free from mobiles and landlines). Lines are open 7am to 11pm.</p>
+				</div>
+			</details>
+			
+			<form method="post" action="" >
+				
+
+				{{ govukInput({
+					label: {
+						text: "Unique organisation number"
+					},
+					id: "unique-org-number",
+					classes: "govuk-!-width-two-thirds",
+					name: "unique-org-number",
+					value: data['unique-org-number']
+				}) }}				  
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+			
+			<p class="govuk-!-font-size-16"><a href="work-postcode">I don’t know the UON</a></p>
+  		</div>
+	</div>    
+
+{% endblock %}

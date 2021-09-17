@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "What's your name?" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+					
+			
+			<form method="post" action="age" >
+				
+
+				{{ govukInput({
+					label: {
+						text: "First name"						
+					},
+					id: "firstname",		
+					classes: "govuk-!-width-one-half",			
+					name: "firstname",
+					value: data['firstname']
+				}) }}				  
+
+				{{ govukInput({
+					label: {
+						text: "Last name"						
+					},
+					id: "lastname",		
+					classes: "govuk-!-width-one-half",			
+					name: "lastname",
+					value: data['lastname']
+				}) }}				  
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            
+  		</div>
+	</div>    
+
+{% endblock %}

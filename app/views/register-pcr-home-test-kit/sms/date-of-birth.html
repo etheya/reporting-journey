@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block head %}
+  <!--[if lte IE 8]><link href="/public/stylesheets/unbranded-ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
+  <!--[if gt IE 8]><!--><link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
+
+  {% for stylesheetUrl in extensionConfig.stylesheets %}
+    <link href="{{ stylesheetUrl }}" rel="stylesheet" type="text/css" />
+  {% endfor %}
+{% endblock %}
+
+{% block content %}
+
+<div class="pseudo-bg"></div>
+<div class="pseudo-template">
+            
+	<p class="govuk-!-font-weight-bold">Question 5 of 6</p>
+
+	{% if data['register-for'] == "No" %}
+		<p>What is their date of birth?</p>
+	{% else %}
+		<p>What is your date of birth?</p>
+	{% endif %}
+	<p>Example: 31 March 1980.</p>        
+
+	<form method="post" action="results">
+		<div class="govuk-form-group">
+			<input class="govuk-input" id="dob" name="dob"  type="text">
+		</div>		
+		{{ govukButton({
+			text: "Send"        
+		}) }}	
+	</form>
+        
+</div>
+
+{% endblock %}
+
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}

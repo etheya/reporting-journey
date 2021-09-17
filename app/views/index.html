@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Prototypes" %}
+{% set pageSection = "Testing and self-isolating Coronavirus (COVID‑19)" %}
+ 
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+
+        <!-- <ul class="govuk-list">
+            <li>Last updated: 20 May 2021</li> 
+            <li>Prototype version: {{releaseVersion}}</li>
+        </ul> -->
+
+        <p>Prototypes of some of the services that have been designed and developed in response to the Coronavirus (COVID‑19) pandemic for testing and self-isolation.</p>                       
+        
+		<div class="govuk-grid-row">			
+			<div class="govuk-grid-column-full">
+        		<h2 class="govuk-heading-m">Get a free PCR test to check if you have coronavirus (COVID-19)</h2>
+			</div>	
+			<div class="govuk-grid-column-two-thirds">
+				<p>If you have any of these 3 coronavirus (COVID-19) symptoms, use this service to get a polymerase chain reaction (PCR) test as soon as possible</p>              
+			</div>
+			<div class="govuk-grid-column-one-third">
+				<ul class="govuk-list">
+					<li><a class="govuk-link govuk-link--no-visited-state" href="get-coronavirus-test/">View iterations <span class="govuk-visually-hidden"> for get a free PCR test to check if you have coronavirus (COVID-19)</span></a></li>	
+					<li><a class="govuk-link govuk-link--no-visited-state" href="#">Listings</a></li>
+				</ul>				
+			</div>
+		</div>
+		
+		<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+		
+		
+				
+				
+		<div class="govuk-grid-row">			
+			<div class="govuk-grid-column-full">        
+				<h2 class="govuk-heading-m">Report a COVID-19 rapid lateral flow test result</h2>
+			</div>
+			<div class="govuk-grid-column-two-thirds">
+				<p>Use this service to report your result to the NHS after using a rapid lateral flow test kit to check if you’re infectious with coronavirus (COVID-19)</p>
+			</div>
+			<div class="govuk-grid-column-one-third">
+				<ul class="govuk-list">
+					<li><a class="govuk-link govuk-link--no-visited-state" href="report-lateral-flow-test/">View iterations <span class="govuk-visually-hidden">for report a COVID-19 rapid lateral flow test result</span></a></li>
+					<li><a class="govuk-link govuk-link--no-visited-state" href="#">Listings</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+		
+		<div class="govuk-grid-row">			
+			<div class="govuk-grid-column-full">        
+				<h2 class="govuk-heading-m">Register a Coronavirus (COVID-19) PCR home test kit</h2>
+			</div>
+			<div class="govuk-grid-column-two-thirds">
+				<p>Use this service to register a coronavirus (COVID-19) PCR test kits so you can get test results.</p>
+			</div>
+			<div class="govuk-grid-column-one-third">
+				<ul class="govuk-list">
+					<li><a class="govuk-link govuk-link--no-visited-state" href="register-pcr-home-test-kit/">View iterations <span class="govuk-visually-hidden">for report a COVID-19 rapid lateral flow test result</span></a></li>
+					<li><a class="govuk-link govuk-link--no-visited-state" href="#">Listings</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+		
+		<div class="govuk-grid-row">			
+			<div class="govuk-grid-column-full">        
+				<h2 class="govuk-heading-m">Get a rapid lateral flow test if you are a contact</h2>
+			</div>
+			<div class="govuk-grid-column-two-thirds">
+				<p>Order rapid lateral flow tests so that a user can test themselves daily and as long as the result is negative, they will not need to isolate, therefore able to continue essential duties such as work, shopping etc.</p>
+			</div>
+			<div class="govuk-grid-column-one-third">
+				<ul class="govuk-list">
+					<li><a class="govuk-link govuk-link--no-visited-state" href="rapid-lateral-flow-contact/">View iterations <span class="govuk-visually-hidden">for report a COVID-19 rapid lateral flow test result</span></a></li>
+					<li><a class="govuk-link govuk-link--no-visited-state" href="#">Listings</a></li>
+				</ul>
+			</div>
+		</div> -->
+       
+    </div>
+</div>
+
+{% endblock %}

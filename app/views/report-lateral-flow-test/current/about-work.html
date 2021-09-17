@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Did you take this test for your job?" %}
+{% set pageSection = "Prototype" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<p>This also applies to temporary staff and volunteers</p>
+
+			<form method="post" action="employer-provided-test-kit" >
+
+				{{ govukRadios({					
+					idPrefix: "about-work",
+					name: "about-work",
+					fieldset: {
+						legend: {
+							text: "Tell us why you took the test (continued)",
+							isPageHeading: false,
+							classes: "govuk-visually-hidden"
+					  	}
+					},					
+					items: [
+					  { value: "Yes, redirect(social-care-role)", text: "It's for a social care service", hint: { text: "This includes domiciliary care, care homes, extra care, supported living, children’s homes and day care centres" }, checked: checked("about-work", "Yes") },
+					  { value: "No, redirect(education-role)", text: "It’s for an education provider", hint: { text: "For example a nursery, school, college, university, childcare provider, childminder or other education provider" }, checked: checked("about-work", "No") },
+					  { value: "No, redirect(nhs-setting)", text: "It’s for the NHS in England, Northern Ireland or Wales",  checked: checked("about-work", "No") },
+					  { value: "No", text: "It's not listed",  checked: checked("about-work", "No") }
+					]
+				}) }}
+
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            
+  		</div>
+	</div>    
+
+{% endblock %}

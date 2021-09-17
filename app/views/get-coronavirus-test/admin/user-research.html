@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Get a free PCR test to check if you have coronavirus (COVID-19) prototype" %}
+{% set pageSection = "User research prototype" %}
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {{ macroPageHeader.pageHeader(pageHeading, pageSection) }}        
+        <p>Last updated: 20 May 2021</p>        
+        <p>If you have any of these 3 coronavirus (COVID-19) symptoms, use this service to get a polymerase chain reaction (PCR) test as soon as possible.</p>
+
+        <form action="" method="post" >            
+            {{ govukButton({
+                text: "Start user test"            
+            }) }}
+        </form>        
+
+    </div>
+</div>
+
+{% endblock %}

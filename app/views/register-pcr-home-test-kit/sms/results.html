@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block head %}
+	<!--[if lte IE 8]><link href="/public/stylesheets/unbranded-ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
+  	<!--[if gt IE 8]><!--><link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
+
+  	{% for stylesheetUrl in extensionConfig.stylesheets %}
+    	<link href="{{ stylesheetUrl }}" rel="stylesheet" type="text/css" />
+  	{% endfor %}
+{% endblock %}
+
+{% block content %}
+
+<div class="pseudo-bg"></div>
+<div class="pseudo-template">            
+    
+	<p class="govuk-!-font-weight-bold">Question 6 of 6</p>
+	<p>How do you want to get your results?</p>
+	<p>If you want to get them by email, tell us your email address.</p>
+	<p>If you want to get them by text message, tell us your phone number.</p>
+
+	{% if data['register-for'] == "No" %}
+		<p>Check that the person you are registering for is happy for their results to be sent to the email address or phone number you provide.</p>        
+	{% endif %}
+
+    <form method="post" action="information">
+        <div class="govuk-form-group">
+            <input class="govuk-input" id="get-results" name="get-results"  type="text">
+        </div>
+          
+        {{ govukButton({
+            text: "Send"        
+        }) }}
+        
+    </form>
+
+</div>
+
+{% endblock %}
+
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}

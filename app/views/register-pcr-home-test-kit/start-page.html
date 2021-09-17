@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Register a coronavirus (COVID-19) PCR home test kit" %}
+{% set pageSection = "" %}
+ 
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block beforeContent %}
+    {% include "includes/phase-banner.html" %}
+    
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+
+        <h2 class="govuk-heading-m">Check if this service is right for you</h2>
+        
+        <p>Test kit registration is how the NHS matches your contact details to the COVID-19 test kit you used.</p>
+        <p>You need to register the test kit so you can get the test result.</p>
+        <!-- <p>Use this service to register a coronavirus (COVID-19) PCR home test kit so you can get the test result.</p>
+        <p>PCR is the test for COVID-19 that is sent to a lab.</p> -->
+        
+        <h3 class="govuk-heading-s">Who should use this service</h3>
+        <p>Use this service to register a PCR home test kit. PCR is the test for COVID-19 that is sent to a lab.</p>
+
+        <h3 class="govuk-heading-s">Who should not use this service</h3>        
+        <p>You need to use a different service if:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>you went to a test site and you need to <a href="#">register a test kit you used at the test site</a></li>
+            <li>you travelled to the UK, and you need to <a href="#">register a PCR test you're doing after you entered the UK</a></li>
+            <li>you did a rapid lateral flow test yourself at home or work, and you need to <a href="#">report your test result to the NHS</a></li>            
+        </ul>
+
+        <h2 class="govuk-heading-m">What you need</h2>
+
+        <p>Before you start, you will need:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>the unique test kit barcode</li>
+            <li>your order ID from the confirmation email (only if you ordered your test kit and you have an order ID)</li>
+            <li>to find your nearest Royal Mail priority postbox, or book a courier (only if you ordered your test kit and will return it by post)</li>
+        </ul>
+
+        <p>f you are registering a test for more than one person, you need to register each test to get all the results.</p>
+
+        
+
+        <h2 class="govuk-heading-m">Get help to register a test kit</h2>
+        <p>If you cannot use the online service, call 119 (free from mobiles and landlines). Lines are open every day, 7am to 11pm. 119 provides support in 200 languages.</p>
+        <p><a href="https://interpreternow.co.uk/nhs119">InterpreterNow</a> is a free online British Sign Language interpreter service for 119.</p>
+        <p class="govuk-!-padding-bottom-3">You can use the free <a href="https://www.bemyeyes.com">Be My Eyes app</a> to get help from trained NHS Test and Trace staff. Download the app, go to 'Specialized Help' and select NHS Test & Trace in the 'Personal Health' category.</p>
+        
+        {{ govukButton({
+            text: "Start now",
+            href: "do-you-have-an-order-id",
+            isStartButton: true
+        }) }}
+       
+
+        <h2 class="govuk-heading-m">Advice about getting tested in the UK</h2>
+        <ul class="govuk-list">
+            <li><a class="govuk-link govuk-link--no-visited-state" href="https://www.nhs.uk/conditions/coronavirus-covid-19/testing/">England - NHS.UK: Testing for coronavirus</a></li>
+            <li><a class="govuk-link govuk-link--no-visited-state" href="https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/coronavirus-covid-19/test-and-protect/coronavirus-covid-19-testing">Scotland – NHS Inform: COVID-19 testing</a></li>
+            <li><a class="govuk-link govuk-link--no-visited-state" href="https://gov.wales/get-tested-coronavirus-covid-19">Wales – Welsh Government: getting tested for COVID-19</a></li>
+            <li><a class="govuk-link govuk-link--no-visited-state" href="https://www.nidirect.gov.uk/campaigns/coronavirus-covid-19">Northern Ireland – nidirect: COVID-19</a></li>
+        </ul>
+
+    </div>
+</div>
+
+{% endblock %}

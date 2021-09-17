@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% set registersName = data['first-name'] + " " + data['last-name']  %}
+
+{% if data['registering-test-kit'] == "No" %}
+
+    {% if ((data['first-name'] ) and (data['last-name'] )) %}
+        {% set pageHeading = "Do you want to use your camera to scan " + registersName + "’s test kit barcode?" %}
+    {% else %}    
+        {% set pageHeading = "Do you want to use your camera to scan their test kit barcode?" %}
+    {% endif %}
+
+{% else %}
+
+    {% set pageHeading = "Do you want to use your camera to scan the test kit barcode?" %}
+
+{% endif %}
+
+
+
+
+{% set pageSection = "" %}
+ 
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block beforeContent %}
+    {% include "includes/phase-banner.html" %}
+    {% include "includes/back.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+
+        
+        <p>You can use the camera on your phone or computer to scan the test kit barcode. You’ll find this barcode attached to the plastic tube and plastic bag.</p>
+        <p>The test kit barcode is different to the pre-paid Royal Mail return barcode included in the box.</p>
+        {# <p>Instead of scanning, you can enter the 11 characters below the barcode, for example CHE00000501.</p>
+         #}
+
+        {{ govukDetails({
+            summaryText: "What does the barcode look like?",
+            text: "Image to follow"
+        }) }}
+
+
+        <form method="post" action="scan-barcode" >
+            {{ govukRadios({
+                classes: "govuk-radios--inline",
+                idPrefix: "taking-part-in-surge-testing",
+                name: "taking-part-in-surge-testing",
+                fieldset: {
+                    legend: {
+                    text: "How do you want to enter your test kit barcode?",
+                    isPageHeading: false,
+                    classes: "govuk-visually-hidden"
+                    }
+                },
+                items: [
+                    { value: "Yes", text: "Yes", checked: checked('taking-part-in-surge-testing','Yes') },                    
+                    { value: "No, redirect(test-kit-barcode)", text: "No", checked: checked('taking-part-in-surge-testing','No') }
+                ]
+            }) }}        
+
+            {{ govukButton({
+                text: "Continue"
+            }) }}
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

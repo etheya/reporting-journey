@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Get a free PCR test to check if you have coronavirus (COVID-19)" %}
+{% set pageSection = "" %}
+ 
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block beforeContent %}
+    {% include "includes/phase-banner.html" %}
+    {% include "includes/back.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+
+        <p>Service screens to follow.</p>
+
+    </div>
+</div>
+
+{% endblock %}

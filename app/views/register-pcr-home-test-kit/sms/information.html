@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block head %}
+  <!--[if lte IE 8]><link href="/public/stylesheets/unbranded-ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
+  <!--[if gt IE 8]><!--><link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
+
+  {% for stylesheetUrl in extensionConfig.stylesheets %}
+    <link href="{{ stylesheetUrl }}" rel="stylesheet" type="text/css" />
+  {% endfor %}
+{% endblock %}
+
+{% block content %}
+
+<div class="pseudo-bg"></div>
+<div class="pseudo-template">            
+        
+    <p>We've got all the information you sent.</p>
+    <p>If you need to register another test, reply with 'register'.</p>
+
+    <form method="post" action="six-questions">
+    	<div class="govuk-form-group">
+        	<input class="govuk-input" id="register-again" name="register-again"  type="text">
+      	</div>      
+      	{{ govukButton({
+        	text: "Send"        
+      	}) }}    
+    </form>
+    
+</div>
+
+{% endblock %}
+
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% if data['registering-test-kit'] == "No" %}
+    {% set pageHeading = "What is their name?" %}
+{% else %}
+    {% set pageHeading = "What is your name?" %}
+{% endif %}
+{% set pageSection = "" %}
+ 
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block beforeContent %}
+    {% include "includes/phase-banner.html" %}
+    {% include "includes/back.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+
+        {% if data['linkaction'] == "change" %}
+        <form method="post" action="check-your-answers" >
+        {% else %}
+        <form method="post" action="test-kit-barcode" >
+        {% endif %}
+
+            {{ govukInput({
+                label: {
+                    text: "First name",
+                    classes: "",
+                    isPageHeading: false
+                },                
+                id: "first-name",
+                classes: "govuk-!-width-two-thirds",
+                name: "first-name",
+                value: data['first-name']
+            }) }}
+
+            {{ govukInput({
+                label: {
+                    text: "Last name",
+                    classes: "",
+                    isPageHeading: false
+                },                
+                id: "last-name",
+                classes: "govuk-!-width-two-thirds",
+                name: "last-name",
+                value: data['last-name']
+            }) }}
+
+            {{ govukButton({
+                text: "Continue"
+            }) }}
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

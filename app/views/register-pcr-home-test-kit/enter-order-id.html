@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "What is your order ID?" %}
+{% set pageSection = "" %}
+ 
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block beforeContent %}
+    {% include "includes/phase-banner.html" %}
+    {% include "includes/back.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+
+        
+        <form method="post" action="https://govuk-testing-prototype.herokuapp.com/antigen/v2/home-testing/name" >
+
+            {{ govukInput({
+                label: {
+                    text: "Enter your order ID",
+                    classes: "govuk-visually-hidden",
+                    isPageHeading: false
+                },
+                hint: {
+                    text: "For example, 0123456789."
+                },
+                id: "enter-order-id",
+                classes: "govuk-!-width-two-thirds",
+                name: "enter-order-id",
+                value: data['enter-order-id']
+            }) }}
+
+            {{ govukButton({
+                text: "Continue"
+            }) }}
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

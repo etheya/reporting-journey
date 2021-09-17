@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% set registersName = data['first-name'] %}
+
+{% if data['registering-test-kit'] == "No" %}
+    {% if ((data['first-name'] ) and (data['last-name'] )) %}
+        {% set pageHeading = "How does  " + registersName + " want to get their result?" %}
+    {% else %}    
+        {% set pageHeading = "How do they want to get their result?" %}
+    {% endif %}
+{% else %}
+    {% set pageHeading = "How do you want to get your result?" %}
+{% endif %}
+{% set pageSection = "" %}
+ 
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block beforeContent %}
+    {% include "includes/phase-banner.html" %}
+    {% include "includes/back.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+
+        {% if data['registering-test-kit'] == "No" %}
+        <div class="govuk-inset-text">
+            <p>Check that {{ data['first-name'] }} is happy for their results to be sent to the email address or phone number you provide.</p>
+        </div>
+        {% endif %}
+        
+        <form method="post" action="check-your-answers" >
+
+
+            {% set emailHtml %}
+                {{ govukInput({
+                    id: "email-address",
+                    name: "email-address",
+                    type: "email",
+                    spellcheck: false,
+                    classes: "govuk-!-width-two-thirds",
+                    label: {
+                        text: "Email address"
+                    },
+                    value: data['email-address']
+                }) }}
+            {% endset -%}
+
+            {% set phoneHtml %}
+                {{ govukInput({
+                    id: "phone-number",
+                    name: "phone-number",
+                    type: "tel",
+                    classes: "govuk-!-width-two-thirds",
+                    label: {
+                        text: "Phone number"
+                    },
+                    value: data['phone-number']
+                }) }}
+            {% endset -%}                       
+
+            {{ govukRadios({
+                idPrefix: "how-to-get-results",
+                name: "how-to-get-results",
+                hint: {
+                    text: "Select one option."
+                },
+                fieldset: {
+                    legend: {
+                    text: "How do you want to get your results?",
+                    isPageHeading: false,
+                    classes: "govuk-visually-hidden"
+                    }
+                },
+                items: [
+                    { value: "Email", text: "Email", conditional: { html: emailHtml }, checked: checked('how-to-get-results','Email') },
+                    { value: "Text message", text: "Text message", conditional: { html: phoneHtml }, checked: checked('how-to-get-results','Text message') }
+                ]
+            }) }}        
+
+            {{ govukButton({
+                text: "Continue"
+            }) }}
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

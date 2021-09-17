@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Scan the test kit barcode" %}
+{% set pageSection = "" %}
+ 
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block beforeContent %}
+    {% include "includes/phase-banner.html" %}
+    {% include "includes/back.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+
+        
+        <p>Position the barcode so it fits inside the square on your mobile or computer’s camera.</p>            
+        
+        <img src="/public/images/camera-view.png" alt="camera view for scan">
+
+        <p></p>
+
+        <form method="post" action="date-of-birth" >
+            {{ govukButton({
+                text: "Continue"
+            }) }}
+        </form>
+
+        {# <p><a href="test-kit-barcode">Cancel</a></p> #}
+
+    </div>
+</div>
+
+{% endblock %}

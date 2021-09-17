@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Tell us why you took the test (continued)" %}
+{% set pageSection = "Prototype" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<form method="post" action="test-date" >
+
+				{{ govukRadios({					
+					idPrefix: "test-reason-continued",
+					name: "test-reason-continued",
+					fieldset: {
+						legend: {
+							text: "Tell us why you took the test (continued)",
+							isPageHeading: false,
+							classes: "govuk-visually-hidden"
+					  	}
+					},					
+					items: [
+					  { value: "community organisation, redirect(community-number)", text: "A community organisation provided the test and a Community Number",  checked: checked("test-reason-continued", "community organisation") },
+					  { value: "visiting someone, redirect(social-care-id)", text: "For visiting someone who gets care or support from social care services",  checked: checked("test-reason-continued", "visiting someone") },
+					  { value: "care or support, redirect(social-care-id)", text: "For getting care or support from social care services",  checked: checked("test-reason-continued", "care or support") },
+					  { divider: "or" },
+					  { value: "another reason", text: "Another reason (for example, to follow NHS advice or Government guidance)",  checked: checked("test-reason-continued", "another reason") }
+					]
+				}) }}
+
+
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            
+  		</div>
+	</div>    
+
+{% endblock %}

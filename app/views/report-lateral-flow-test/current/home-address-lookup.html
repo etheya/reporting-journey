@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "What is your home address in the UK?" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<p>If you do not have a home address in the UK, use the address where you’re staying.</p>						
+			
+			<form method="post" action="" >
+				
+
+				{{ govukInput({
+					label: {
+						text: "Postcode"
+					},
+					id: "unique-org-number",
+					classes: "govuk-!-width-one-third",
+					name: "unique-org-number",
+					value: data['unique-org-number']
+				}) }}				  
+
+				{{ govukButton({
+					text: "Find address"				
+				}) }}
+
+				<p><a href="home-address-details">Enter address manually</a></p>
+
+			</form>
+            
+
+			<details class="govuk-details" data-module="govuk-details">
+				<summary class="govuk-details__summary">
+					<span class="govuk-details__summary-text">If you do not have a fixed address</span>
+				</summary>
+				<div class="govuk-details__text">
+					<p>You can use the postcode of a nearby reference address, such as your GP.</p>					
+					<p>If you still need help, call 119 (free from mobiles and landlines). Lines are open 7am to 11pm.</p>
+				</div>
+			</details>
+
+
+  		</div>
+	</div>    
+
+{% endblock %}

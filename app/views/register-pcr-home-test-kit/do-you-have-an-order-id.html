@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Do you have an order ID?" %}
+{% set pageSection = "" %}
+ 
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block beforeContent %}
+    {% include "includes/phase-banner.html" %}
+    {% include "includes/back.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+
+        <p>If you ordered your PCR test online or by calling 119, your 10-digit order ID is in your order confirmation email. The email is from Coronavirus Home Testing.</p>
+        
+        {{ govukInsetText({
+            text: "It’s quicker to register your test kit if you have your order ID."
+        }) }}        
+
+        <form method="post" action="taking-part-in-surge-testing" >
+            {{ govukRadios({
+                idPrefix: "have-order-id",
+                name: "have-order-id",
+                fieldset: {
+                    legend: {
+                    text: "Do you have an order ID?",
+                    isPageHeading: false,
+                    classes: "govuk-visually-hidden"
+                    }
+                },
+                items: [
+                    { value: "Yes, redirect(enter-order-id)", text: "Yes, I have an order ID", checked: checked('have-order-id','Yes') },
+                    { value: "No", text: "No, I do not have an order ID", checked: checked('have-order-id','No') }
+                ]
+            }) }}        
+
+            {{ govukButton({
+                text: "Continue"
+            }) }}
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

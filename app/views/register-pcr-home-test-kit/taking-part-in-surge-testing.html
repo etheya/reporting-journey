@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Is the person doing the test taking part in surge testing?  " %}
+{% set pageSection = "" %}
+ 
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block beforeContent %}
+    {% include "includes/phase-banner.html" %}
+    {% include "includes/back.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+
+        <p>Surge testing is taking place in some areas of England to help prevent new outbreaks of COVID-19 spreading, including variants of concern.</p>        
+
+        <form method="post" action="registering-test-kit" >
+            {{ govukRadios({
+                idPrefix: "taking-part-in-surge-testing",
+                name: "taking-part-in-surge-testing",
+                fieldset: {
+                    legend: {
+                    text: "Is the person doing the test taking part in surge testing?  ",
+                    isPageHeading: false,
+                    classes: "govuk-visually-hidden"
+                    }
+                },
+                items: [
+                    { value: "Yes, redirect(registering-test-kit)", text: "Yes", checked: checked('taking-part-in-surge-testing','Yes') },
+                    { value: "No redirect(https://govuk-testing-prototype.herokuapp.com/litereg-accounts/v3/whos-taking-the-test)", text: "No", checked: checked('taking-part-in-surge-testing','No') },
+                    { value: "Dont know, redirect(https://govuk-testing-prototype.herokuapp.com/litereg-accounts/v3/whos-taking-the-test)", text: "I don’t know", checked: checked('taking-part-in-surge-testing','Dont know') }
+                ]
+            }) }}        
+
+            {{ govukButton({
+                text: "Continue"
+            }) }}
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

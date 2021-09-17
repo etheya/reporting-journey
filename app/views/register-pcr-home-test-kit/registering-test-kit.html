@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Are you registering the test kit for yourself?" %}
+{% set pageSection = "" %}
+ 
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block beforeContent %}
+    {% include "includes/phase-banner.html" %}
+    {% include "includes/back.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+
+        <p>If you are registering for more than one person,  you will need to register each test kit separately.</p>        
+
+        <form method="post" action="what-is-your-name" >            
+
+            {{ govukRadios({
+                classes: "govuk-radios--inline",
+                idPrefix: "registering-test-kit",
+                name: "registering-test-kit",
+                fieldset: {
+                    legend: {
+                    text: "Who are you registering a test kit for? ",
+                    isPageHeading: false,
+                    classes: "govuk-visually-hidden"
+                    }
+                },
+                items: [
+                    { value: "Yes", text: "Yes", checked: checked('registering-test-kit','Yes') },
+                    { value: "No", text: "No", checked: checked('registering-test-kit','No') }                    
+                ]
+            }) }}        
+
+            {{ govukButton({
+                text: "Continue"
+            }) }}
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

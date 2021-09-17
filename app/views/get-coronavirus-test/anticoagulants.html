@@ -1,0 +1,50 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Is Hugo Furst taking anticoagulants (‘blood thinning’ medicines)?
+{% endblock %}
+
+{% block beforeContent%}
+    {% include "includes/back.html" %}
+{% endblock %}
+
+{% block content %}
+
+    
+    
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">Is Hugo Furst taking anticoagulants (‘blood thinning’ medicines)?</h1>
+        <p>We ask this so we know whether they’re able to take a follow up antibody test.</p>    
+
+        <form method="post" action="" >
+
+            {{ govukRadios({
+                classes: "govuk-radios--inline",
+                idPrefix: "taking-anticoagulants",
+                name: "taking-anticoagulants",
+                fieldset: {
+                    legend: {
+                    text: "Is Hugo Furst taking anticoagulants (‘blood thinning’ medicines)?",
+                    isPageHeading: false,
+                    classes: "govuk-visually-hidden"
+                }
+            },
+            items: [
+                { value: "Yes, redirect(continue-journey)", text: "Yes", checked: checked('taking-anticoagulants','Yes') },
+                { value: "No, redirect(antibody-test-new)", text: "No", checked: checked('taking-anticoagulants','No') }
+            ]
+            }) }}            
+
+            {{ govukButton({
+                text: "Save and continue"
+            }) }}
+        
+        </form>
+
+    </div>
+  </div>
+
+{% endblock %}

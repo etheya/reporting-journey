@@ -1,0 +1,86 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block beforeContent %}
+
+	{{ govukBackLink({
+		text: "Back",
+		href: "#"
+  	}) }}
+{% endblock %}
+
+
+{% block content %}
+
+
+	<div class="govuk-grid-row">
+    	<div class="govuk-grid-column-two-thirds">
+      		<h1 class="govuk-heading-xl">Do you want to take a Polymerase chain reaction (PCR) test with your lateral flow test?</h1>
+			
+			<p>The PCR test is another nose and throat swab test that we will send you with your rapid lateral flow test. </p>
+			<p>This will help the NHS measure and understand how accurate rapid lateral flow tests are.</p>
+			
+			<!-- <details class="govuk-details" data-module="govuk-details">
+				<summary class="govuk-details__summary">
+				  <span class="govuk-details__summary-text">
+					What would i need to do?
+				  </span>
+				</summary>
+				<div class="govuk-details__text"> -->
+					
+					<!-- <p>Your test pack will come with simple step-by-step instructions on how to complete the tests and report the results online.</p> -->
+					<!-- <p>The NHS will use the test results to measure how accurate rapid lateral tests are.</p> -->
+					<!-- <p>Your data will be anonymous.</p> -->
+	
+				<!-- </div>
+			</details> -->
+
+
+			
+
+			<form method="post" action="" >
+			{{ govukRadios({
+				classes: "govuk-radios--inline",
+				idPrefix: "changed-name",
+				name: "changed-name",
+				fieldset: {
+				  legend: {
+					text: "Do you want to take part in an NHS evaluation study?",
+					isPageHeading: false,
+					classes: "govuk-visually-hidden"
+				  }
+				},
+				hint: {
+				  text: ""
+				},
+				items: [
+				  {
+					value: "yes",
+					text: "Yes"
+				  },
+				  {
+					value: "no",
+					text: "No"
+				  }
+				]
+			  }) }}
+			  
+			  {{ govukButton({
+				text: "Continue"
+			  }) }}
+
+			</form>
+
+            
+
+      
+      
+    </div>
+  </div>
+
+{% endblock %}

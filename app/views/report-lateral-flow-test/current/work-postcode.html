@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Enter your work postcode" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+					
+		
+			<form method="post" action="test-date" >
+				
+
+				{{ govukInput({
+					label: {
+					  text: "Work postcode"
+					},					
+					id: "education-provider",
+					classes: "govuk-!-width-one-third",
+					name: "education-provider",
+					value: data['education-provider']
+				}) }}				  
+
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            
+			<p class="govuk-!-font-size-16"><a href="institution-details" >I cannot find the education provider</a></p>
+  		</div>
+	</div>    
+
+{% endblock %}

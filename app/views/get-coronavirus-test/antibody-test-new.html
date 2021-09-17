@@ -1,0 +1,51 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Would Hugo Furst also be willing to take a follow up antibody test?
+{% endblock %}
+
+{% block beforeContent%}
+    {% include "includes/back.html" %}
+{% endblock %}
+
+{% block content %}
+
+    
+    
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">Would Hugo Furst also be willing to take a follow up antibody test?</h1>
+        <p>The follow up antibody test helps the NHS learn more about how COVID-19 spreads. It’s a ‘fingerprick’ blood test they can do at home.</p>
+
+        <form method="post" action="confirmation" >
+
+            {{ govukRadios({
+                classes: "govuk-radios--inline",
+                idPrefix: "follow-up-antibody-test",
+                name: "follow-up-antibody-test",
+                fieldset: {
+                    legend: {
+                    text: "Would Hugo Furst also be willing to take a follow up antibody test?",
+                    isPageHeading: false,
+                    classes: "govuk-visually-hidden"
+                }
+            },
+            items: [
+                { value: "Yes", text: "Yes, they are willing to take a follow up antibody test", checked: checked('follow-up-antibody-test','Yes') },
+                { value: "No", text: "No, they are not willing to take a follow up antibody test", checked: checked('follow-up-antibody-test','No') }
+            ]
+            }) }}
+   
+
+            {{ govukButton({
+                text: "Save and continue"
+            }) }}
+        
+        </form>
+
+    </div>
+  </div>
+
+{% endblock %}

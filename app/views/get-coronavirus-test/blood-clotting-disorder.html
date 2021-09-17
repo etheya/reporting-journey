@@ -1,0 +1,50 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Does Hugo Furst have a blood clotting disorder, such as haemophilia?
+{% endblock %}
+
+{% block beforeContent%}
+    {% include "includes/back.html" %}
+{% endblock %}
+
+{% block content %}
+
+    
+    
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">Does Hugo Furst have a blood clotting disorder, such as haemophilia?</h1>
+        <p>We ask this so we know whether they’re able to take a follow up antibody test.</p>    
+
+        <form method="post" action="continue-journey" >
+
+            {{ govukRadios({
+                classes: "govuk-radios--inline",
+                idPrefix: "blood-clotting-disorder",
+                name: "blood-clotting-disorder",
+                fieldset: {
+                    legend: {
+                    text: "Does Hugo Furst have a blood clotting disorder, such as haemophilia?",
+                    isPageHeading: false,
+                    classes: "govuk-visually-hidden"
+                }
+            },
+            items: [
+                { value: "Yes", text: "Yes", checked: checked('blood-clotting-disorder','Yes') },
+                { value: "No, redirect(anticoagulants)", text: "No", checked: checked('blood-clotting-disorder','No') }
+            ]
+            }) }}            
+
+            {{ govukButton({
+                text: "Save and continue"
+            }) }}
+        
+        </form>
+
+    </div>
+  </div>
+
+{% endblock %}

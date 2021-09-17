@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block head %}
+  <!--[if lte IE 8]><link href="/public/stylesheets/unbranded-ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
+  <!--[if gt IE 8]><!--><link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
+
+  {% for stylesheetUrl in extensionConfig.stylesheets %}
+    <link href="{{ stylesheetUrl }}" rel="stylesheet" type="text/css" />
+  {% endfor %}
+{% endblock %}
+
+{% block content %}
+
+<div class="pseudo-bg"></div>
+<div class="pseudo-template">
+            
+	<p class="govuk-!-font-weight-bold">Question 4 of 6</p>
+
+	{% if data['register-for'] == "No" %}
+		<p>What is the full address where they are currently living, including the postcode?</p>        
+	{% else %}
+		<p>What is the full address where you are currently living, including the postcode?</p>        
+	{% endif %}
+
+	<form method="post" action="date-of-birth">
+		<div class="govuk-form-group">
+			<input class="govuk-input" id="address" name="address"  type="text">
+		</div>		
+		{{ govukButton({
+			text: "Send"        
+		}) }}	
+	</form>
+    
+</div>
+
+{% endblock %}
+
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Report a COVID-19 rapid lateral flow test result" %}
+{% set pageSection = "Prototype" %}
+ 
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+
+        <ul class="govuk-list">
+            <li>Last updated: 27 August </li> 
+            <li>Prototype version: {{releaseVersion}}</li>
+        </ul>
+
+        <p>Use this service to report your result to the NHS after using a rapid lateral flow test kit to check if you’re infectious with coronavirus (COVID-19).</p>
+         
+        
+        <form method="post" action="current/" >
+            
+            {{ govukButton({
+                text: "Current live version",
+                classes: "govuk-!-margin-right-2"
+            }) }}           
+
+            <!-- {{ govukButton({
+                text: "View page by page listings",
+                href: "admin/listings",
+                classes: "govuk-button--secondary"
+            }) }} -->
+        </form>             
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">        
+
+        <h2 class="govuk-heading-m">Other iterations</h2>
+        <p>Work done by TEAM NAME including accessibility changes and amends to the service, any user research undertaken and bug fixes.</p>
+
+        <table class="govuk-table">
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__header" scope="col" width="25%">Iteration</th>
+                    <th class="govuk-table__header" scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">                
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">1.1</td>
+                    <td class="govuk-table__cell">Look at use of patterns on exisiting pages, removal of content not required. </td>
+                </tr>                
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">1.2</td>
+                    <td class="govuk-table__cell">Rethink of service with closer adherement to GDS standards.</td>
+                </tr>                
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+{% endblock %}

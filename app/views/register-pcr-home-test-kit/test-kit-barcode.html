@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% set registersName = data['first-name'] %}
+
+{% if data['registering-test-kit'] == "No" %}
+    {% if ((data['first-name'] ) and (data['last-name'] )) %}
+        {% set pageHeading = "What is the unique barcode number on " + registersName + "’s test kit?" %}
+    {% else %}    
+        {% set pageHeading = "What is the unique barcode number on their test kit?" %}
+    {% endif %}
+{% else %}
+    {% set pageHeading = "What is the unique barcode number on your test kit?" %}
+{% endif %}
+{% set pageSection = "" %}
+ 
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block beforeContent %}
+    {% include "includes/phase-banner.html" %}
+    {% include "includes/back.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+
+        <p>You can use the camera on your phone or computer to scan the test kit barcode. You’ll find this barcode attached to the plastic tube and plastic bag.</p>
+        <p>The test kit barcode is different to the pre-paid Royal Mail return barcode included in the box.</p>
+        {# <p>Instead of scanning, you can enter the 11 characters below the barcode, for example CHE00000501.</p>
+         #}
+
+
+        <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">What does the barcode look like?</span>
+            </summary>
+            <div class="govuk-details__text">
+                <img src="/public/images/barcode-number.png" alt="test kit barcode">
+            </div>
+        </details>
+
+        
+        {{ govukButton({
+            text: "Scan barcode",
+            classes: "govuk-button--secondary",
+            href: "scan-barcode"
+        }) }}
+        
+        {% if data['linkaction'] == "change" %}
+            <form method="post" action="check-your-answers" >
+        {% else %}
+            <form method="post" action="date-of-birth" >
+        {% endif %}
+
+            {{ govukInput({
+                label: {
+                    text: "Barcode number",
+                    classes: "govuk-visually-hidden",
+                    isPageHeading: false
+                },                
+                hint: {
+                    text: "It is 11 characters below the barcode, for example CHE00000501."
+                },
+                id: "barcode-number",
+                classes: "govuk-!-width-two-thirds",
+                name: "barcode-number",
+                value: data['barcode-number']
+            }) }}
+
+            {# {{ govukInput({
+                label: {
+                    text: "Confirm barcode number",
+                    classes: "",
+                    isPageHeading: false
+                },                
+                id: "confirm-barcode-number",
+                classes: "govuk-!-width-two-thirds",
+                name: "confirm-barcode-number",
+                value: data['confirm-barcode-number']
+            }) }} #}
+
+            {{ govukButton({
+                text: "Continue"
+            }) }}
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

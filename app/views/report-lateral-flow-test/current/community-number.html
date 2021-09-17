@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "Enter your Community Number" %}
+{% set pageSection = "" %}
+
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds-from-desktop">
+
+			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+			
+			<p>The Community Number is an 8 digit reference number for the organisation you got your test from.</p>
+			<p>You can find the Community Number at the test collection point or on the leaflet you were given with your test.</p>
+			
+			<details class="govuk-details" data-module="govuk-details">
+				<summary class="govuk-details__summary">
+					<span class="govuk-details__summary-text">What to do if you do not know your Community Number</span>
+				</summary>
+				<div class="govuk-details__text">
+					<p>The organisation can be contacted to get the Community Number.</p>					
+					<p>If you still need help, call 119 (free from mobiles and landlines). Lines are open 7am to 11pm.</p>
+				</div>
+			</details>
+			
+			<form method="post" action="" >
+				
+
+				{{ govukInput({
+					label: {
+						text: "Community number"
+					},
+					id: "unique-org-number",
+					classes: "govuk-!-width-two-thirds",
+					name: "unique-org-number",
+					value: data['unique-org-number']
+				}) }}				  
+
+				{{ govukButton({
+					text: "Continue"				
+				}) }}
+
+			</form>
+            
+  		</div>
+	</div>    
+
+{% endblock %}

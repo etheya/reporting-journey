@@ -1,0 +1,116 @@
+{% extends "layout.html" %}
+
+{% set registersName = data['first-name'] %}
+
+{% if data['registering-test-kit'] == "No" %}
+    {% if ((data['first-name'] ) and (data['last-name'] )) %}
+        {% set pageHeading = "Where is  " + registersName + " currently living?" %}
+    {% else %}    
+        {% set pageHeading = "Where is this person currently living?" %}
+    {% endif %}
+{% else %}
+    {% set pageHeading = "Where are you currently living?" %}
+{% endif %}
+
+
+
+{% set pageSection = "" %}
+ 
+{% block pageTitle %}{{ macroPageTitle.pageTitle(pageHeading) }}{% endblock %}
+
+{% block beforeContent %}
+    {% include "includes/phase-banner.html" %}
+    {% include "includes/back.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
+
+        {% if data['linkaction'] == "change" %}
+            <form method="post" action="check-your-answers" >
+        {% else %}
+            <form method="post" action="how-to-get-results" >
+        {% endif %}
+        
+        
+
+            {% call govukFieldset({
+                legend: {
+                    text: "What is your address?",
+                    classes: "govuk-visually-hidden",
+                    isPageHeading: false
+                }
+                }) %}
+
+                {{ govukInput({
+                    label: {
+                    html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+                    },
+                    id: "address-line-1",
+                    name: "address-line-1",
+                    autocomplete: "address-line1",
+                    value: data['address-line-1']
+                }) }}
+
+                {{ govukInput({
+                    label: {
+                    html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+                    },
+                    id: "address-line-2",
+                    name: "address-line-2",
+                    autocomplete: "address-line2",
+                    value: data['address-line-2']
+                }) }}
+
+                {{ govukInput({
+                    label: {
+                    text: "Town or city"
+                    },
+                    classes: "govuk-!-width-two-thirds",
+                    id: "address-town",
+                    name: "address-town",
+                    autocomplete: "address-level2",
+                    value: data['address-town']
+                }) }}
+
+                {{ govukInput({
+                    label: {
+                    text: "County"
+                    },
+                    classes: "govuk-!-width-two-thirds",
+                    id: "address-county",
+                    name: "address-county",
+                    value: data['address-county']
+                }) }}
+
+                {{ govukInput({
+                    label: {
+                    text: "Postcode"
+                    },
+                    classes: "govuk-input--width-10",
+                    id: "address-postcode",
+                    name: "address-postcode",
+                    autocomplete: "postal-code",
+                    value: data['address-postcode']
+                }) }}
+
+            {% endcall %}
+
+
+
+           
+            
+
+            {{ govukButton({
+                text: "Continue"
+            }) }}
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

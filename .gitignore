@@ -13,3 +13,4 @@ node_modules/*
 package-lock.json
 app/views/DoNotNeed/index-old.html
 app/views/DoNotNeed/index-old.html
+app/views/dwn/*

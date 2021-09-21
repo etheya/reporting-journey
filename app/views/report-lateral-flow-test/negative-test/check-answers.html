@@ -12,11 +12,12 @@
 
 			{{ macroPageHeader.pageHeader(pageHeading, pageSection) }}
 			
+			
+				
+			{% if data['test-result'] == "Negative" %}
+			
 			<h2 class="govuk-heading-m">Test details</h2>
 			<dl class="govuk-summary-list govuk-!-margin-bottom-9">
-				
-				{% if data['test-result'] == "Negative" %}
-
 					{% if data['test-result'] %}
 					<div class="govuk-summary-list__row">
 						<dt class="govuk-summary-list__key">Test result</dt>
@@ -70,7 +71,9 @@
 
 			{% else %}
 
-
+			<h2 class="govuk-heading-m">Personal details</h2>
+			<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+		
 				{% if data['firstname'] %}
 				<div class="govuk-summary-list__row">
 					<dt class="govuk-summary-list__key">Name</dt>
